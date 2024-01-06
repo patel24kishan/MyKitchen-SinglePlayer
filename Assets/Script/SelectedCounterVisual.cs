@@ -17,12 +17,12 @@ public class SelectedCounterVisual : MonoBehaviour
     {
         if (e.selectedCounter==clearCounter)
         {
-            Debug.LogError("inside if");
+           
             ShowSelectedCounter();
         }
         else
         {
-            Debug.LogError("inside else");
+           
             HideSelectedCounter();
         }
        
@@ -30,13 +30,12 @@ public class SelectedCounterVisual : MonoBehaviour
 
     private void ShowSelectedCounter()
     {
-        Debug.LogError("outside if");
+        
         selectedCounterVisual.SetActive(true);
     }
 
     private void HideSelectedCounter()
     {
-        Debug.LogError("outside else");
         selectedCounterVisual.SetActive(false);
     }
 }
