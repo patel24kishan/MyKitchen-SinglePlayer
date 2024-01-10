@@ -970,11 +970,6 @@ PrefabInstance:
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 2066108287}
-    - target: {fileID: 749167825967025401, guid: 4b2abcd086dd6bb44b982341728e4db9,
-        type: 3}
-      propertyPath: counterLayerMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 749167825967025402, guid: 4b2abcd086dd6bb44b982341728e4db9,
         type: 3}
       propertyPath: m_RootOrder
