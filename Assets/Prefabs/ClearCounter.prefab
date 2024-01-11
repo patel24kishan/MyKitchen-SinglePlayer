@@ -193,7 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearCounter: {fileID: 5325181717730660716}
-  selectedCounterVisual: {fileID: 1210813157590712228}
+  selectedCounterVisual:
+  - {fileID: 1210813157590712228}
 --- !u!1001 &9147163719365914156
 PrefabInstance:
   m_ObjectHideFlags: 0

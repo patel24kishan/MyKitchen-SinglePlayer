@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SelectedCounterVisual : MonoBehaviour
 {
-    [SerializeField] private ClearCounter clearCounter;
-    [SerializeField] private GameObject selectedCounterVisual;
+    [SerializeField] private BaseCounter clearCounter;
+    [SerializeField] private GameObject[] selectedCounterVisual;
 
     private void Start()
     {
@@ -30,12 +30,18 @@ public class SelectedCounterVisual : MonoBehaviour
 
     private void ShowSelectedCounter()
     {
+        foreach (GameObject kitchenCounterObj in selectedCounterVisual )
+        {
+            kitchenCounterObj.SetActive(true);
+        }
         
-        selectedCounterVisual.SetActive(true);
     }
 
     private void HideSelectedCounter()
     {
-        selectedCounterVisual.SetActive(false);
+        foreach (GameObject kitchenCounterObj in selectedCounterVisual )
+        {
+            kitchenCounterObj.SetActive(false);
+        }
     }
 }

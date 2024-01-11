@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContainerCounter : MonoBehaviour
+public class ContainerCounter : BaseCounter
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private KitchenObjectScriptObj kitchenObjectPrefab;
+    public override void Interact(Player player)
     {
-        
+            Transform kitchObjTransform = Instantiate(kitchenObjectPrefab.prefab);
+            kitchObjTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
