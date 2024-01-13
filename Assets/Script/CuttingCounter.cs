@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CuttingCounter : BaseCounter
 {
+    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+    public class OnProgressChangedEventArgs :EventArgs
+    {
+        public float progressNormalized;
+    }
+    
+    public event EventHandler OnCutObject;
     [SerializeField] private CuttingRecipeScriptableObj[] cuttingRecipeScriptableObjArray;
 
     private int cuttingProgress=0;
@@ -17,7 +25,15 @@ public class CuttingCounter : BaseCounter
                 {
                     // Drop Item if it can be cut
                     player.GetKitchenObject().SetKitchenObjectParent(this);
+                    
+                    
                     cuttingProgress = 0;
+                    CuttingRecipeScriptableObj cuttingRecipeScriptableObj =
+                        GetCuttingRecipeScriptableObjWithInput(GetKitchenObject().GetKitchenObjectScriptObj());
+                    OnProgressChanged?.Invoke(this,new OnProgressChangedEventArgs
+                    {
+                        progressNormalized = (float)cuttingProgress/cuttingRecipeScriptableObj.cuttingProgressMax
+                    });
                 }
             }
             else
@@ -43,13 +59,21 @@ public class CuttingCounter : BaseCounter
     {
         if (HasKitchenObject() && HasObjectWithInput(GetKitchenObject().GetKitchenObjectScriptObj()))
         {
-            // Cut it only if it has object AND it can be cut
+            // Cut object only if it has object AND it can be cut
             
             cuttingProgress++;
             
+            OnCutObject?.Invoke(this,EventArgs.Empty);
+            
             CuttingRecipeScriptableObj cuttingRecipeScriptableObj =
                 GetCuttingRecipeScriptableObjWithInput(GetKitchenObject().GetKitchenObjectScriptObj());
-
+            
+            //Edit progress bar
+            OnProgressChanged?.Invoke(this,new OnProgressChangedEventArgs
+            {
+                progressNormalized = (float)cuttingProgress/cuttingRecipeScriptableObj.cuttingProgressMax
+            });
+            
             if (cuttingProgress >= cuttingRecipeScriptableObj.cuttingProgressMax)
             {
                 KitchenObjectScriptObj kitchenObjectSliced =
