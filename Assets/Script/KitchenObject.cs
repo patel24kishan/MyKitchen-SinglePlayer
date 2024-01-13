@@ -30,7 +30,7 @@ public class KitchenObject : MonoBehaviour
         
         transform.parent = kitchenObjectParent.GetkitchenobjectFollowTransform();
         transform.localPosition=Vector3.zero;
-        ;
+        
     }
     
     public IKitchenObjectParent GetKitchenObject()

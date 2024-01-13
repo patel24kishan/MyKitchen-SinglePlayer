@@ -1561,6 +1561,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2976381730995011105, guid: bb687a4a02e2e8e41b9a3060977c1e8c,
+        type: 3}
+      propertyPath: TomatoSlicedSO
+      value: 
+      objectReference: {fileID: 11400000, guid: b52bae8488b95b749929da600ad91f29,
+        type: 2}
+    - target: {fileID: 2976381730995011105, guid: bb687a4a02e2e8e41b9a3060977c1e8c,
+        type: 3}
+      propertyPath: cuttingRecipeScriptableObjArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976381730995011105, guid: bb687a4a02e2e8e41b9a3060977c1e8c,
+        type: 3}
+      propertyPath: cuttingRecipeScriptableObjArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b5433a5062539bb47bd8a9231f76a3b6,
+        type: 2}
+    - target: {fileID: 2976381730995011105, guid: bb687a4a02e2e8e41b9a3060977c1e8c,
+        type: 3}
+      propertyPath: cuttingRecipeScriptableObjArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b5433a5062539bb47bd8a9231f76a3b6,
+        type: 2}
     - target: {fileID: 4157168528120286626, guid: bb687a4a02e2e8e41b9a3060977c1e8c,
         type: 3}
       propertyPath: m_RootOrder
