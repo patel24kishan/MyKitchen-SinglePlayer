@@ -9,14 +9,27 @@ public class ClearCounter : BaseCounter
    
     public override void Interact(Player player)
     {
-        /*if (kitchenObjectParent == null)
+        if (!HasKitchenObject())
         {
-            Transform kitchObjTransform = Instantiate(kitchenObjectPrefab.prefab, counterTopPoint);
-            kitchObjTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
+            if (player.HasKitchenObject())
+            {
+                player.GetKitchenObject().SetKitchenObjectParent(this);
+            }
+            else
+            {
+               //Player has nothing 
+            }
         }
         else
         {
-            kitchenObjectParent.SetKitchenObjectParent(player);
-              }*/
+            if (player.HasKitchenObject())
+            {
+                //Do nothing
+            }
+            else
+            {
+                GetKitchenObject().SetKitchenObjectParent(player);
+            }
+        }
     }
 }
