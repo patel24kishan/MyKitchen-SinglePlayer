@@ -262,7 +262,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1095597784126183607, guid: 89b1ec3ad8f5bd24896e26132a8978cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89b1ec3ad8f5bd24896e26132a8978cd, type: 3}
 --- !u!4 &4157168528120286626 stripped
 Transform:
@@ -288,9 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ca8c06aca1c314a97d84adda720c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterTopPoint: {fileID: 7515539918497874941}
   kitchenObjectPrefab: {fileID: 11400000, guid: e759215282e92ca4e83cb952852c2f18,
     type: 2}
-  counterTopPoint: {fileID: 7515539918497874941}
 --- !u!4 &7515539918497874941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1638693768019373521, guid: 89b1ec3ad8f5bd24896e26132a8978cd,
