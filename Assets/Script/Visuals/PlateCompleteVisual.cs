@@ -18,11 +18,23 @@ public class PlateCompleteVisual : MonoBehaviour
    private void Start()
    {
       plateKitchenObject.OnIngredientsAdded += PlateKitchenObject_OnIngredientsAdded;
+      foreach (KitchenObjectScirptObj_gameObject kitchenObject in kitchenObjectScirptObjGameObjectList)
+      {
+         kitchenObject.gameObject.SetActive(false);
+      }
    }
 
    private void PlateKitchenObject_OnIngredientsAdded(object sender, PlateKitchenObject.OnIngredientsAddedEventArgs e)
    {
-      
+      foreach (KitchenObjectScirptObj_gameObject kitchenObject in kitchenObjectScirptObjGameObjectList)
+      {
+         if (kitchenObject.kitchenObjectScriptObj==e.kitchenObjectScriptObj)
+         {
+            kitchenObject.gameObject.SetActive(true);
+            
+         }
+         
+      }
       
    }
 }
