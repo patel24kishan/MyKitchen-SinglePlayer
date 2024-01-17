@@ -1,0 +1,34 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlateKitchenObject : KitchenObject
+{
+    [SerializeField] private List<KitchenObjectScriptObj> validKitchenObjectScriptObjList;
+    private List<KitchenObjectScriptObj> kitchenObjectScriptObjList;
+
+    private void Awake()
+    {
+        kitchenObjectScriptObjList = new List<KitchenObjectScriptObj>();
+    }
+
+    public bool TryAddIngredients(KitchenObjectScriptObj kitchenObjectScriptObj)
+    {
+        //Check for valid Item
+        if (!validKitchenObjectScriptObjList.Contains(kitchenObjectScriptObj))
+        {
+            return false;
+        }
+
+        if (kitchenObjectScriptObjList.Contains(kitchenObjectScriptObj))
+            {
+                return false;
+            }
+            else
+            {
+                kitchenObjectScriptObjList.Add(kitchenObjectScriptObj);
+                return true;
+            }
+    }
+}
