@@ -42,4 +42,9 @@ public class PlateKitchenObject : KitchenObject
                 return true;
             }
     }
+
+    public List<KitchenObjectScriptObj> GetKitchenObjectScriptObjList()
+    {
+        return kitchenObjectScriptObjList;
+    }
 }
