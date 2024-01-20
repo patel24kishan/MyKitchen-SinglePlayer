@@ -39,6 +39,11 @@ public class DeliveryManager : MonoBehaviour
       }
    }
 
+   
+   /// <summary>
+   /// The compelexity of plate-recipe matchs should be improved by unecessary nested-Loop
+   /// </summary>
+   /// <param name="plateKitchenObject"></param>
    public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
    {
       for (int i = 0; i < waitingRecipeList.Count; i++)
