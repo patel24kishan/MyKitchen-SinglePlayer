@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Salad
   m_EditorClassIdentifier: 
   kitchenObjectScriptObjList:
-  - {fileID: 11400000, guid: 46a7ff5fa61dd1743aae40938687e44f, type: 2}
-  - {fileID: 11400000, guid: b5d862235e2d1f348928f439ae7cd608, type: 2}
-  recipeName: Burger
+  - {fileID: 11400000, guid: c3987d7e6b3d6544d8270bcbe49ff606, type: 2}
+  - {fileID: 11400000, guid: b52bae8488b95b749929da600ad91f29, type: 2}
+  recipeName: Salad

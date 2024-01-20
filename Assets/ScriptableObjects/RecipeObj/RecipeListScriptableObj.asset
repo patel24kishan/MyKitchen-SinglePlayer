@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971795e479cea9f44a2e3102a6fc1ef4, type: 3}
   m_Name: RecipeListScriptableObj
   m_EditorClassIdentifier: 
-  recipeScriptableObjList: []
+  recipeScriptableObjList:
+  - {fileID: 11400000, guid: aeafa60a8cb6fa7458ad97154d0fe89f, type: 2}
+  - {fileID: 11400000, guid: 8c357773e1d2f5942a64012e69294d45, type: 2}
+  - {fileID: 11400000, guid: 31a04a321f46a09428da1c3ccff465c1, type: 2}
+  - {fileID: 11400000, guid: c1e545dd0cc02504680626e4120bfee7, type: 2}

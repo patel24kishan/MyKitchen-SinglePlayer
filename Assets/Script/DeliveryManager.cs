@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 
 public class DeliveryManager : MonoBehaviour
 {
-   
+
+   public event EventHandler OnRecipeSpawned;
+   public event EventHandler OnRecipeCompleted;
    public static DeliveryManager Instance { get; private set; }
    
    [SerializeField] private RecipeListScriptableObj recipeListScriptableObj;
@@ -33,8 +35,9 @@ public class DeliveryManager : MonoBehaviour
             RecipeScriptableObj waitingRecipeScriptableObj =
                recipeListScriptableObj.recipeScriptableObjList[
                   Random.Range(0, recipeListScriptableObj.recipeScriptableObjList.Count)];
-               Debug.Log(waitingRecipeScriptableObj.recipeName);
             waitingRecipeList.Add(waitingRecipeScriptableObj);
+            
+            OnRecipeSpawned?.Invoke(this,EventArgs.Empty);
          }
       }
    }
@@ -76,8 +79,9 @@ public class DeliveryManager : MonoBehaviour
             if (plateContentMatchesRecipe)
             {
                //Ingredient of Plate matches recipe
-               Debug.Log("Player delivered right Recipe");
                waitingRecipeList.RemoveAt(i);
+               
+               OnRecipeCompleted?.Invoke(this,EventArgs.Empty);
                return;
             }
          }
@@ -85,6 +89,11 @@ public class DeliveryManager : MonoBehaviour
       
       //No match Found
       //Player did not deliver correct Recipe
-      Debug.Log("Player did not deliver correct recipe");
+     // Debug.Log("Player did not deliver correct recipe");
+   }
+
+   public List<RecipeScriptableObj> GetWaitingRecipeList()
+   {
+      return waitingRecipeList;
    }
 }
