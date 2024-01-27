@@ -22,6 +22,7 @@ public class PlayerSounds : MonoBehaviour
         {
             footstepTimer = footstepTimerMax;
 
+            //Need Adjustment as Sound feels scrambled
             if (player.IsWalking())
             {
                 SoundManager.Instance.PlayFootStepSound(player.transform.position);
