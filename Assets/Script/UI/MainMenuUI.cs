@@ -23,5 +23,8 @@ public class MainMenuUI : MonoBehaviour
                 Application.Quit();
         });
 
+        //Reset scene
+        Time.timeScale = 1f;
+
     }
 }

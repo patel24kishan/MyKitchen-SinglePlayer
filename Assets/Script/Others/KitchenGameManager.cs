@@ -6,6 +6,8 @@ using UnityEngine;
 public class KitchenGameManager : MonoBehaviour
 {
    public event EventHandler OnGameStateChanged;
+   public event EventHandler OnGamePaused;
+   public event EventHandler OnGameUnpaused;
    public static KitchenGameManager Instance { get; private set; }
    private enum State{
       WaitingToStart,
@@ -19,12 +21,19 @@ public class KitchenGameManager : MonoBehaviour
   [SerializeField] private float waitingToStartTimer = 1f;
   [SerializeField] private float countdownToStartTimer = 3f;
   [SerializeField] private float gamePlayingTimerMax = 5f;
+  private bool isGamePaused;
   private float gamePlayingTimer;
 
    private void Awake()
    {
       Instance = this;
       state = State.WaitingToStart;
+      
+   }
+
+   private void Start()
+   {
+      GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
    }
 
    private void Update()
@@ -62,7 +71,28 @@ public class KitchenGameManager : MonoBehaviour
       }
       Debug.Log("State: "+state);
    }
+   
+   private void GameInput_OnPauseAction(object sender, System.EventArgs e)
+   {
+      TogglePauseGame();
+   }
 
+   public void TogglePauseGame()
+   {
+      isGamePaused = !isGamePaused;
+      if (isGamePaused)
+      {
+        Time.timeScale = 0f; 
+        OnGamePaused?.Invoke(this,EventArgs.Empty);
+      }
+      else
+      {
+         Time.timeScale = 1f;
+         OnGameUnpaused?.Invoke(this,EventArgs.Empty);
+      }
+   }
+
+   
    public bool IsGamePlaying()
    {
       return state == State.GamePlaying;
