@@ -11,6 +11,11 @@ public class CuttingCounter : BaseCounter, IHasProgress
     [SerializeField] private CuttingRecipeScriptableObj[] cuttingRecipeScriptableObjArray;
 
     private int cuttingProgress=0;
+
+    new public static void ResetStaticData()
+    {
+        onAnyCut = null;
+    }
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
