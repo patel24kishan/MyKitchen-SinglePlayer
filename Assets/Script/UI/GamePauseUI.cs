@@ -7,11 +7,16 @@ using UnityEngine.UI;
 
 public class GamePauseUI : MonoBehaviour
 {
+    public static GamePauseUI Instance { get; private set; }
+    
     [SerializeField] private Button resumeBtn;
     [SerializeField] private Button mainMenuBtn;
+    [SerializeField] private Button optionBtn;
 
     private void Awake()
     {
+        Instance = this;
+        
         resumeBtn.onClick.AddListener((() =>
         {
             KitchenGameManager.Instance.TogglePauseGame();
@@ -19,6 +24,12 @@ public class GamePauseUI : MonoBehaviour
         mainMenuBtn.onClick.AddListener((() =>
         {
             SceneManager.LoadScene(SceneLoader.Scene.MainMenuScene.ToString());
+        }));
+        
+        optionBtn.onClick.AddListener((() =>
+        {
+            Hide();
+           OptionsUI.Instance.Show();
         }));
     }
 
@@ -38,12 +49,12 @@ public class GamePauseUI : MonoBehaviour
         Hide();
     }
     
-    private void Show()
+    public void Show()
     {
         gameObject.SetActive(true);
     }
 
-    private void Hide()
+    public void Hide()
     {
         gameObject.SetActive(false);
     }

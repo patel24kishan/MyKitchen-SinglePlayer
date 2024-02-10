@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private AudioClipRefScriptableObj audioClipRef;
-    public static SoundManager Instance { get; private set; }
     
+    
+    public static SoundManager Instance { get; private set; }
+
+    private const string PLAYER_PREFS_GAME_VOLUME = "gameVolume";
+    
+    [SerializeField] private AudioClipRefScriptableObj audioClipRef;
+
+    private float gameVolume = 1f;
     private void Awake()
     {
         Instance = this;
+        gameVolume = PlayerPrefs.GetFloat(PLAYER_PREFS_GAME_VOLUME,1f);
     }
     private void Start()
     {
@@ -57,9 +64,9 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClipRef.trash,counter.transform.position);
     }
     
-    public void PlaySound(AudioClip[] audioClipArray, Vector3 position,float volume=1f)
+    public void PlaySound(AudioClip[] audioClipArray, Vector3 position,float volumeMultiplier=1f)
     {
-        AudioSource.PlayClipAtPoint(audioClipArray[Random.Range(0,audioClipArray.Length)],position,volume);
+        AudioSource.PlayClipAtPoint(audioClipArray[Random.Range(0,audioClipArray.Length)],position,gameVolume*volumeMultiplier);
     }
     
     public void PlayFootStepSound(Vector3 position,float volume=1f)
@@ -67,8 +74,25 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClipRef.footstep,position,volume);
     }
     
-    public void PlaySound(AudioClip audioClip, Vector3 position,float volume=1f)
+    public void PlaySound(AudioClip audioClip, Vector3 position,float volumeMultiplier=1f)
     {
-        AudioSource.PlayClipAtPoint(audioClip,position,volume);
+        AudioSource.PlayClipAtPoint(audioClip,position,gameVolume*volumeMultiplier);
+    }
+    
+    public void ChangeVolume()
+    {
+        gameVolume += 0.1f;
+        if (gameVolume>1f)
+        {
+            gameVolume = 0f;
+        }
+        
+        PlayerPrefs.SetFloat(PLAYER_PREFS_GAME_VOLUME,gameVolume);
+        PlayerPrefs.Save();
+    }
+
+    public float GetGameVolume()
+    {
+        return gameVolume;
     }
 }
