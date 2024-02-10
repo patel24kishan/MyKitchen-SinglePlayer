@@ -69,7 +69,7 @@ public class KitchenGameManager : MonoBehaviour
          case State.GameOver:
             break;
       }
-      Debug.Log("State: "+state);
+     // Debug.Log("State: "+state);
    }
    
    private void GameInput_OnPauseAction(object sender, System.EventArgs e)
