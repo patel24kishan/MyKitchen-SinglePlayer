@@ -12,6 +12,11 @@ public class MainMenuUI : MonoBehaviour
 
     private void Awake()
     {
+        playBtn.Select();
+        
+        //Reset scene
+        Time.timeScale = 1f;
+        
         playBtn.onClick.AddListener(() =>
         {
             SceneLoader.Load(SceneLoader.Scene.GameScene);
@@ -22,9 +27,5 @@ public class MainMenuUI : MonoBehaviour
         {
                 Application.Quit();
         });
-
-        //Reset scene
-        Time.timeScale = 1f;
-
     }
 }

@@ -18,7 +18,10 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private Button moveRightBtn;
     [SerializeField] private Button interactBtn;
     [SerializeField] private Button interactAltBtn;
-    [SerializeField] private Button PauseBtn;
+    [SerializeField] private Button pauseBtn;
+    [SerializeField] private Button gamepadInteractBtn;
+    [SerializeField] private Button gamepadInteractAltBtn;
+    [SerializeField] private Button gamepadPauseBtn;
     
     [SerializeField] private TextMeshProUGUI moveUpTxt;
     [SerializeField] private TextMeshProUGUI moveDownTxt;
@@ -26,7 +29,10 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moveRightTxt;
     [SerializeField] private TextMeshProUGUI interactTxt;
     [SerializeField] private TextMeshProUGUI interactAltTxt;
-    [SerializeField] private TextMeshProUGUI PauseTxt;
+    [SerializeField] private TextMeshProUGUI pauseTxt;
+    [SerializeField] private TextMeshProUGUI gamepadInteractTxt;
+    [SerializeField] private TextMeshProUGUI gamepadInteractAltTxt;
+    [SerializeField] private TextMeshProUGUI gamepadPauseTxt;
 
     [SerializeField] private TextMeshProUGUI soundText;
     [SerializeField] private TextMeshProUGUI musicText;
@@ -88,9 +94,24 @@ public class OptionsUI : MonoBehaviour
             ReBindkey(GameInput.Binding.InteractAlt);
         });
         
-        PauseBtn.onClick.AddListener(() =>
+        pauseBtn.onClick.AddListener(() =>
         {
             ReBindkey(GameInput.Binding.Pause);
+        });
+        
+        gamepadInteractBtn.onClick.AddListener(() =>
+        {
+            ReBindkey(GameInput.Binding.Gamepad_Interact);
+        }); 
+        
+        gamepadInteractAltBtn.onClick.AddListener(() =>
+        {
+            ReBindkey(GameInput.Binding.Gamepad_InteractAlt);
+        });
+        
+        gamepadPauseBtn.onClick.AddListener(() =>
+        {
+            ReBindkey(GameInput.Binding.Gamepad_Pause);
         });
         
     }
@@ -127,12 +148,17 @@ public class OptionsUI : MonoBehaviour
         moveRightTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Move_Right).ToString();
         interactTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Interact).ToString();
         interactAltTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.InteractAlt).ToString();
-        PauseTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Pause).ToString();
+        pauseTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Pause).ToString();
+        gamepadInteractTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Gamepad_Interact).ToString();
+        gamepadInteractAltTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Gamepad_InteractAlt).ToString();
+        gamepadPauseTxt.text = GameInput.Instance.GetBinding(GameInput.Binding.Gamepad_Pause).ToString();
     }
     
     public void Show()
     {
         gameObject.SetActive(true);
+        
+        soundBtn.Select();
     }
 
     public void Hide()

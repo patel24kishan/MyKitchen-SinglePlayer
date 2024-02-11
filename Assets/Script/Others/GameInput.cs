@@ -17,6 +17,9 @@ public class GameInput : MonoBehaviour
         Interact,
         InteractAlt,
         Pause,
+        Gamepad_Interact,
+        Gamepad_InteractAlt,
+        Gamepad_Pause,
     }
 
     public EventHandler OnInteractAction;
@@ -40,8 +43,6 @@ public class GameInput : MonoBehaviour
     //Cleanup on new scene load
     private void OnDestroy()
     {
-
-
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
         playerInputActions.Player.Pause.performed -= Pause_performed;
@@ -59,6 +60,7 @@ public class GameInput : MonoBehaviour
 
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        Debug.Log("Pasuue calsued");
         OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
@@ -74,8 +76,7 @@ public class GameInput : MonoBehaviour
         {
             default:
             case Binding.Interact:
-            return playerInputActions.Player.Interact.bindings[0].ToDisplayString();
-
+                return playerInputActions.Player.Interact.bindings[0].ToDisplayString();
             
             case Binding.InteractAlt:
                 return playerInputActions.Player.InteractAlternate.bindings[0].ToDisplayString();
@@ -94,6 +95,15 @@ public class GameInput : MonoBehaviour
            
             case Binding.Move_Right:
                 return playerInputActions.Player.Move.bindings[4].ToDisplayString();
+            
+            case Binding.Gamepad_Interact:
+                return playerInputActions.Player.Interact.bindings[1].ToDisplayString();
+            
+            case Binding.Gamepad_InteractAlt:
+                return playerInputActions.Player.InteractAlternate.bindings[1].ToDisplayString();
+            
+            case Binding.Gamepad_Pause:
+                return playerInputActions.Player.Pause.bindings[1].ToDisplayString();
 
         }
     }
@@ -101,12 +111,9 @@ public class GameInput : MonoBehaviour
     public void ReMappingKeyBinding(Binding binding,Action actionRebound)
     {
         playerInputActions.Player.Disable();
-
         InputAction inputAction;
-
         int bindingIndex=0;
-
-
+        
         switch (binding)
         {
             default:
@@ -143,6 +150,21 @@ public class GameInput : MonoBehaviour
             case Binding.Move_Right:
                 inputAction = playerInputActions.Player.Move;
                 bindingIndex = 4;
+                break;
+            
+            case Binding.Gamepad_Interact:
+                inputAction = playerInputActions.Player.Interact;
+                bindingIndex = 1;
+                break;
+
+            case Binding.Gamepad_InteractAlt:
+                inputAction = playerInputActions.Player.InteractAlternate;
+                bindingIndex = 1;
+                break;
+
+            case Binding.Gamepad_Pause:
+                inputAction = playerInputActions.Player.Pause;
+                bindingIndex = 1;
                 break;
         }
 
