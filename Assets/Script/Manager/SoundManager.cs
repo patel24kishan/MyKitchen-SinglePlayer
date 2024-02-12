@@ -71,13 +71,20 @@ public class SoundManager : MonoBehaviour
     
     public void PlayFootStepSound(Vector3 position,float volume=1f)
     {
-        PlaySound(audioClipRef.footstep,position,volume);
+        PlaySound(audioClipRef.footstep,position);
+    }
+    
+    public void PlayBurnWarningSound(Vector3 position,float volume=1f)
+    {
+        PlaySound(audioClipRef.warning,position);
     }
     
     public void PlaySound(AudioClip audioClip, Vector3 position,float volumeMultiplier=1f)
     {
         AudioSource.PlayClipAtPoint(audioClip,position,gameVolume*volumeMultiplier);
     }
+    
+   
     
     public void ChangeVolume()
     {
